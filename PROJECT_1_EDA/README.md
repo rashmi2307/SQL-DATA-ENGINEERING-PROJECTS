@@ -15,9 +15,9 @@ A SQL project exploring the remote Data Engineer job market using real-world job
 
 If you only have a minute, review these:
 
-1. [`01_top_demanded_skills.sql`](./01_top_demanded_skills.sql) – identifies the most requested skills for remote Data Engineers
-2. [`02_top_paying_skills.sql`](./02_top_paying_skills.sql) – analyzes the highest-paying skills and their demand
-3. [`03_optimal_skills.sql`](./03_optimal_skills.sql) – combines salary and demand into a single ranking metric
+1. [`Top Demanded Skills`](./01_top_demanded_skills.sql) – identifies the most requested skills for remote Data Engineers
+2. [`Top Paying Skills`](./02_top_paying_skills.sql) – analyzes the highest-paying skills and their demand
+3. [`Optimal Skills`](./03_optimal_skills.sql) – combines salary and demand into a single ranking metric
 
 ---
 
