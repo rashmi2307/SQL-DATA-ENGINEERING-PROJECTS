@@ -56,3 +56,25 @@ FROM job_postings_fact
 ORDER BY RANDOM()
 LIMIT 10;
 
+SELECT 
+    '2026-01-01 00:00:00+00'::TIMESTAMPTZ AT TIME ZONE 'UTC';
+
+SELECT 
+    job_title_short,
+    job_location,
+    job_posted_date AT TIME ZONE 'UTC' AT TIME ZONE 'EST'
+FROM job_postings_fact
+WHERE job_location LIKE 'New York, NY';
+
+
+-- What time most postings are done
+
+SELECT
+    EXTRACT(HOUR FROM job_posted_date AT TIME ZONE 'UTC' AT TIME ZONE 'EST') AS job_posted_hour,
+    COUNT(job_id)
+FROM job_postings_fact
+WHERE job_location LIKE 'New York, NY'
+GROUP BY 
+    EXTRACT(HOUR FROM job_posted_date AT TIME ZONE 'UTC' AT TIME ZONE 'EST')
+ORDER BY COUNT(job_id) DESC;
+
