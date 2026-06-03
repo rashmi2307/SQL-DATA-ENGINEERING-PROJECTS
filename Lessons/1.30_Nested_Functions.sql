@@ -75,6 +75,112 @@ SELECT
 FROM skill_table;
 
 
+-- Array Of Structs
+
+SELECT [
+    {skill:'python', type:'programming'},
+    {skill:'sql', type:'query_language'}
+] AS skills_array_of_structs;
+
+WITH skill_table AS (
+    SELECT 'python' AS skills, 'programming' AS types
+    UNION ALL
+    SELECT 'sql', 'query_language'
+    UNION ALL
+    SELECT 'r', 'programming'
+), skills_array_struct AS (
+    SELECT
+        ARRAY_AGG(
+            STRUCT_PACK(
+            skill:=skills,
+            type:=types
+            )
+        ) array_struct
+    FROM skill_table
+)
+SELECT 
+    array_struct[1].skill, 
+    array_struct[2].type, 
+    array_struct[3]
+FROM skills_array_struct;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
