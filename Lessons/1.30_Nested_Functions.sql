@@ -42,6 +42,8 @@ FROM skills_array;
 
 
 
+
+
 -- STRUCT Intro
 
 SELECT {skill: 'python', type: 'programming'} AS skills_struct;
@@ -73,6 +75,9 @@ SELECT
         type:=types
     )
 FROM skill_table;
+
+
+
 
 
 -- Array Of Structs
@@ -108,13 +113,51 @@ FROM skills_array_struct;
 
 
 
+-- MAP/OBJECT/DICTIONARY
+
+WITH skill_map AS (
+    SELECT MAP {'skill':'python','type':'programming'} AS skill_type
+)
+SELECT 
+    skill_type['skill'],
+    skill_type['type']
+FROM skill_map;
+
+
+ -- JSON 
+
+
+WITH raw_skill_json AS (
+     SELECT 
+        '{"skill":"python", "type":"programming"}'::JSON AS skill_json
+)
+SELECT 
+    STRUCT_PACK(
+        skill:= json_extract_string(skill_json,'$.skill'),
+        type:= json_extract_string(skill_json,'$.type')
+    )
+FROM raw_skill_json;
 
 
 
 
-
-
-
+WITH raw_json AS (
+     SELECT 
+        '{
+            {"skill":"python", "type":"programming"},
+            {"skill":"sql","type":"query_language"},
+            {"skill":"r","type":"programming"}
+        }' ::JSON AS skills_json
+)
+SELECT
+    ARRAY_AGG(
+        STRUCT_PACK(
+        skill:= json_extract_string(skills_json,'$.skill'),
+        type:= json_extract_string(skills_json,'$.type')
+        )
+        ORDER BY json_extract_string(e.value,'$.skill')
+    ) AS skills
+FROM raw_json,json_each(skills_json) AS e;
 
 
 
