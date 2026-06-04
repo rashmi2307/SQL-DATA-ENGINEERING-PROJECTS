@@ -95,7 +95,7 @@ A denormalized table created by joining warehouse tables together.
 * Reduce query complexity
 * Improve reporting usability
 
-**SQL File:** `03_create_flat_mart.sql`
+**SQL File:** [`03_create_flat_mart.sql`](./03_create_flat_mart.sql)
 
 ---
 
@@ -111,7 +111,7 @@ Aggregated skill demand data organized by month and job title.
 * Support reporting on hiring patterns
 * Track changes in technology demand
 
-**SQL File:** `04_create_skills_mart.sql`
+**SQL File:** [`04_create_skills_mart.sql`](./04_create_skills_mart.sql)
 
 ---
 
@@ -128,9 +128,8 @@ Tracks important job postings and supports incremental updates.
 * Practice SQL MERGE operations
 
 **SQL Files:**
-
-* `05_create_priority_mart.sql`
-* `06_update_priority_mart.sql`
+- [`05_create_priority_mart.sql`](./05_create_priority_mart.sql)
+- [`06_update_priority_mart.sql`](./06_update_priority_mart.sql)
 
 ---
 
@@ -146,7 +145,7 @@ Aggregated hiring information by company, location, and role.
 * Compare company recruitment activity
 * Support business-focused reporting
 
-**SQL File:** `07_create_company_mart.sql`
+**SQL File:** [`07_create_company_mart.sql`](./07_create_company_mart.sql)
 
 ---
 
